@@ -4,6 +4,7 @@ import gsap from "gsap";
 import React, { useRef, useEffect } from "react";
 import styles from "./page.module.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Curve from "../components/Layout/Curve";
 
 export default function page() {
   const imageContainer = useRef(null);
@@ -83,62 +84,64 @@ export default function page() {
   };
 
   return (
-    <div ref={container}>
-      {" "}
-      {/* container of opacity animation = entire window */}
-      <div className="w-screen h-[30vh] bg-black grid place-content-center">
-        <div className="text-6xl font-bold text-white">Mini 2023</div>
-      </div>
-      <div ref={imageContainer} className="flex bg-black">
-        <div className="w-[50%]">
-          <div className="m-auto w-[80%]">
-            <div
-              // ref={container}
-              className="h-screen flex flex-col justify-center text-white"
-            >
-              <div className={styles.body}>{splitWords(phrase)}</div>
-            </div>
-            <div className="h-screen flex flex-col justify-center text-white">
-              {/* <div className={styles.body}>{splitWords(phrase)}</div> */}
-
-              <div className={styles.body}>
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more orless
-                  normal distribution of letters.
-                </p>
+    <Curve>
+      <div ref={container}>
+        {" "}
+        {/* container of opacity animation = entire window */}
+        <div className="w-screen h-[30vh] bg-black grid place-content-center">
+          <div className="text-6xl font-bold text-white">Mini 2023</div>
+        </div>
+        <div ref={imageContainer} className="flex bg-black">
+          <div className="w-[50%]">
+            <div className="m-auto w-[80%]">
+              <div
+                // ref={container}
+                className="h-screen flex flex-col justify-center text-white"
+              >
+                <div className={styles.body}>{splitWords(phrase)}</div>
               </div>
-              <div></div>
-            </div>
+              <div className="h-screen flex flex-col justify-center text-white">
+                {/* <div className={styles.body}>{splitWords(phrase)}</div> */}
 
-            <div className="h-screen flex flex-col justify-center text-white">
-              {/* <div className={styles.body}>{splitWords(phrase)}</div> */}
-              {/* <div className="w-full font-bold text-3xl"></div> */}
-              <div className={styles.body}>
-                <p>
-                  It is a long established fact that a reader will be distracted
-                  by the readable content of a page when looking at its layout.
-                  The point of using Lorem Ipsum is that it has a more orless
-                  normal distribution of letters.
-                </p>
+                <div className={styles.body}>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more orless normal distribution of letters.
+                  </p>
+                </div>
+                <div></div>
               </div>
-              <div></div>
+
+              <div className="h-screen flex flex-col justify-center text-white">
+                {/* <div className={styles.body}>{splitWords(phrase)}</div> */}
+                {/* <div className="w-full font-bold text-3xl"></div> */}
+                <div className={styles.body}>
+                  <p>
+                    It is a long established fact that a reader will be
+                    distracted by the readable content of a page when looking at
+                    its layout. The point of using Lorem Ipsum is that it has a
+                    more orless normal distribution of letters.
+                  </p>
+                </div>
+                <div></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div
-          ref={pinContainerRef}
-          className="bg-black w-[50%] h-screen items-center justify-center"
-        >
-          {/* <div className="rounded-xl w-[40vw] h-[40vw] bg-orange-500"></div> */}
-          <SceneCanvas source={"/mini.glb"} />
+          <div
+            ref={pinContainerRef}
+            className="bg-black w-[50%] h-screen items-center justify-center"
+          >
+            {/* <div className="rounded-xl w-[40vw] h-[40vw] bg-orange-500"></div> */}
+            <SceneCanvas source={"/mini.glb"} />
+          </div>
+        </div>
+        <div className="w-screen h-[50vh] bg-black grid place-content-center">
+          <div className=" text-9xl text-white font-bold">MATTEO JUST</div>
         </div>
       </div>
-      <div className="w-screen h-[50vh] bg-black grid place-content-center">
-        <div className=" text-9xl text-white font-bold">MATTEO JUST</div>
-      </div>
-    </div>
+    </Curve>
   );
 }
