@@ -7,7 +7,7 @@ import {
 } from "@react-three/drei";
 import Model from "./Model";
 
-export default function SceneCanvas({ source }) {
+export default function SceneCanvas({ source }: { source: string}) {
   return (
     <div className="flex justify-center items-center h-full">
       <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 100]}}>

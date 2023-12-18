@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, useSpring, useTransform } from "framer-motion";
+import { MotionValue, motion, useSpring, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
 const fontSize = 30;
 const padding = 15;
-const height = fontSize + padding;
+// const height = fontSize + padding;
 
 export default function AnimateCounter() {
   let [count, setCount] = useState(0);
@@ -23,7 +23,11 @@ export default function AnimateCounter() {
   );
 }
 
-function Counter({ value }) {
+type Counter = {
+  value: number
+}
+
+function Counter({ value }: Counter) {
   let animatedValue = useSpring(value, { stiffness: 50, damping: 20, duration: 2 });
   useEffect(() => {
     animatedValue.set(value);
@@ -50,25 +54,35 @@ function Counter({ value }) {
   );
 }
 
-function Digit({ place, value }) {
-    let valueRoundedToPlace = Math.floor(value / place);
-    let animatedValue = useSpring(valueRoundedToPlace);
+// type Digit = {
+//   place: number,
+//   value: number
+// }
+// function Digit({ place, value }: Digit) {
+//   let valueRoundedToPlace = Math.floor(value / place);
+//     let animatedValue = useSpring(valueRoundedToPlace);
   
-    useEffect(() => {
-      animatedValue.set(valueRoundedToPlace);
-    }, [animatedValue, valueRoundedToPlace]);
+//     useEffect(() => {
+//       animatedValue.set(valueRoundedToPlace);
+//     }, [animatedValue, valueRoundedToPlace]);
   
-    return (
-      <div style={{ height }} className="relative w-32 tabular-nums">
-        {[...Array(10).keys()].map((i) => (
-          <Number key={i} mv={animatedValue} number={i} />
-        ))}
-      </div>
-    );
+//     return (
+//       <div style={{ height }} className="relative w-32 tabular-nums">
+//         {[...Array(10).keys()].map((i) => (
+//           <Number key={i} mv={animatedValue} number={i} />
+//         ))}
+//       </div>
+//     );
+//   }
+  
+  type Number = {
+    place: number,
+    mv: MotionValue,
+    number: number
   }
-  
 
-function Number({ place, mv, number }) {
+function Number({ place, mv, number }: Number) {
+
   let y = useTransform(mv, (latest) => {
     let height = 128; // height of box -> TODO: change to height of text in page
     let placeValue = (latest / place) % 10;
