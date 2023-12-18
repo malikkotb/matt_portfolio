@@ -1,5 +1,5 @@
 .curve{
-    svg{
+    svg, .background{
         // bounding box of svg
         width: 100vw;
         height: calc(100vh + 600px); // height longer than window height
@@ -7,6 +7,10 @@
         left: 0;
         position: fixed;
         pointer-events: none;
+    }
+
+    .background {
+        background-color: orange;
     }
 }
 

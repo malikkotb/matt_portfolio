@@ -1,11 +1,12 @@
-"use client"
+"use client";
 import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import Layout from './components/layout'
- 
-export default function MyApp({ Component, pageProps }: AppProps) {
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import Layout from "./components/layout";
+import { AnimatePresence } from "framer-motion";
+
+export default function MyApp({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -17,8 +18,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-  )
+    <AnimatePresence mode="wait">
+      <Layout>
+        <Component key={router.route} {...pageProps} />
+      </Layout>
+    </AnimatePresence>
+  );
 }

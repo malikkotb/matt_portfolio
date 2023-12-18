@@ -1,7 +1,7 @@
 "use client";
 import { Inter } from "next/font/google";
 import { useEffect } from "react";
-import { useRouter } from 'next/router'
+import { useRouter } from "next/router";
 import AnimateCounter from "./components/AnimateCounter";
 import Curve from "./components/Layout/Curve";
 
@@ -19,9 +19,9 @@ export default function Home() {
   return (
     <>
       <Curve>
-      <div className="h-screen w-screen bg-[#011EF5] text-center items-center flex">
-        <AnimateCounter />
-      </div>
+        <div className="h-screen w-screen bg-[#011EF5] text-center items-center flex">
+          <AnimateCounter />
+        </div>
       </Curve>
     </>
   );
