@@ -1,6 +1,24 @@
+"use client"
+import Lenis from "@studio-freight/lenis";
+import { useEffect } from "react";
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
-// corresponds layout page in app router
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import Layout from './components/layout'
+ 
+export default function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+
+    requestAnimationFrame(raf);
+  }, []);
+  return (
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+  )
 }
