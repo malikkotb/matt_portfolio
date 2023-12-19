@@ -88,7 +88,6 @@ function Number({ place, mv, number }: Number) {
     let placeValue = (latest / place) % 10;
     let offset = (10 + number - placeValue) % 10;
 
-    // TODO: if place = number, only then flip that, otherwise skip it
     let memo = offset * height;
 
     if (offset > 5) {

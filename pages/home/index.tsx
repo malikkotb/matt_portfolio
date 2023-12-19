@@ -15,7 +15,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <div className="relative z-10 w-full">
+        <div className="relative">
           <Images />
           <Projects />
         </div>

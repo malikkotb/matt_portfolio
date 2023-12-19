@@ -1,40 +1,40 @@
-.curve{
-    svg, .background{
-        // bounding box of svg
-        width: 100vw;
-        height: calc(100vh + 600px); // height longer than window height
-        top: -300px; // to center the page 
-        left: 0;
-        position: fixed;
-        pointer-events: none;
-    }
-
-    .background {
-        background-color: orange;
-    }
-}
-
 // .curve{
 //     svg, .background{
-//         position: fixed;
-//         height: calc(100vh + 600px);
+//         // bounding box of svg
 //         width: 100vw;
-//         pointer-events: none;
+//         height: calc(100vh + 600px); // height longer than window height
+//         top: -300px; // to center the page 
 //         left: 0;
-//         top: 0;
+//         position: fixed;
+//         pointer-events: none;
 //     }
-//     .background{
+
+//     .background {
 //         background-color: black;
-//         transition: opacity 0s linear 0.1s;
-//     }
-//     .route{
-//         position: absolute;
-//         left: 50%;
-//         top: 40%;
-//         color: white;
-//         font-size: 46px;
-//         z-index: 3;
-//         transform: translateX(-50%);
-//         text-align: center;
 //     }
 // }
+
+.curve{
+    .curveSvg, .background{
+        position: fixed;
+        height: calc(100vh + 600px);
+        width: 100vw;
+        pointer-events: none;
+        left: 0;
+        top: 0;
+    }
+    .background{
+        background-color: black;
+        transition: opacity 0s linear 0.1s;
+    }
+    .route{
+        position: absolute;
+        left: 50%;
+        top: 40%;
+        color: white;
+        font-size: 46px;
+        z-index: 3;
+        transform: translateX(-50%);
+        text-align: center;
+    }
+}

@@ -1,7 +1,7 @@
 "use client";
-// import { animate, motion } from "framer-motion";
-// import Link from "next/link";
-// import { text, curve, translate } from "./anim";
+import { animate, motion } from "framer-motion";
+import Link from "next/link";
+import { text, curve, translate } from "./anim";
 import { useEffect, useState } from "react";
 // import { useRouter } from "next/router";
 import style from "./style.module.scss";
@@ -14,6 +14,15 @@ const routes = {
   "/": "Home",
   "/about": "About",
   "/contact": "Contact",
+};
+
+const anim = (variants: any) => {
+  return {
+    initial: "initial",
+    animate: "enter",
+    exit: "exit",
+    variants,
+  };
 };
 
 export default function Curve({ children }: props) {
@@ -38,21 +47,15 @@ export default function Curve({ children }: props) {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  const anim = (variants: any) => {
-    return {
-      initial: "initial",
-      animate: "enter",
-      exit: "exit",
-      variants,
-    };
-  };
-
   return (
     <div className={style.curve}>
-      <div className={style.background}>
-        {dimensions.width > 0 && <SVG {...dimensions} />}
-        {children}
-      </div>
+      <div
+        style={{ opacity: dimensions.width == null ? 1 : 0 }}
+        className={style.background}
+      />
+
+      {dimensions.width > 0 && <SVG {...dimensions} />}
+      {children}
     </div>
   );
 }
@@ -63,19 +66,78 @@ type Dimensions = {
 };
 
 const SVG = ({ width, height }: Dimensions) => {
-  const d = width + height;
   // svg path for quadratic bezier curve
   const initialPath = `
         M0 300
         Q${width / 2} 0 ${width} 300
         L${width} ${height + 300}
-        Q${width / 2} ${height + 300} 0 ${height + 300}
+        Q${width / 2} ${height + 600} 0 ${height + 300}
         L0 300
     `;
 
+  const targetPath = `
+        M0 300
+        Q${width / 2} 0 ${width} 300
+        L${width} ${height}
+        Q${width / 2} ${height} 0 ${height}
+        L0 300
+    `;
+
+  const curve = {
+    initial: {
+      d: initialPath,
+    },
+    enter: {
+      d: targetPath,
+      transition: {
+        duration: .75,
+        delay: 0.3,
+        ease: [0.76, 0, 0.24, 1],
+      }
+    },
+  };
+
+  const slide = {
+    initial: {
+      top: "-300px",
+    },
+    enter: {
+      top: "-100vh",
+      transition: {
+        duration: .75,
+        delay: 0.3,
+        ease: [0.76, 0, 0.24, 1],
+      }
+    },
+  };
+
   return (
-    <svg>
-      <path d={initialPath}></path>
-    </svg>
+    <motion.svg className={style.curveSvg} {...anim(slide)}>
+      <motion.path {...anim(curve)}></motion.path>
+    </motion.svg>
   );
 };
+
+// const SVG = ({ height, width }: Dimensions) => {
+//   const initialPath = `
+//       M0 300
+//       Q${width / 2} 0 ${width} 300
+//       L${width} ${height + 300}
+//       Q${width / 2} ${height + 600} 0 ${height + 300}
+//       L0 0
+//   `;
+
+//   const targetPath = `
+//       M0 300
+//       Q${width / 2} 0 ${width} 300
+//       L${width} ${height}
+//       Q${width / 2} ${height} 0 ${height}
+//       L0 0
+//   `;
+
+//   return (
+//     <motion.svg className={style.curveSvg} {...anim(translate)}>
+//       <motion.path {...anim(curve(initialPath, targetPath))} />
+//     </motion.svg>
+//   );
+// };

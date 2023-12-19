@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
       <Curve>
-        <div className="h-screen w-screen bg-[#011EF5] text-center items-center flex">
+        <div className="h-screen overflow-x-hidden w-screen bg-[#011EF5] text-center items-center flex">
           <AnimateCounter />
         </div>
       </Curve>
