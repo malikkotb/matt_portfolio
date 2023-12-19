@@ -20,7 +20,7 @@ export default function Hero() {
     <motion.section
       style={{ opacity: opacity }}
       ref={targetRef}
-      className="relative h-[50vh] w-screen justify-center"
+      className="relative h-[100vh] w-screen justify-center"
     >
       <motion.div
         style={{ scale, position: position }}

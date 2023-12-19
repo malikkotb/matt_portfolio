@@ -14,10 +14,10 @@ export default function Home() {
     <Curve>
       <main>
         <Hero />
-        {/* <div className="relative">
+        <div className="relative">
           <Images />
           <Projects />
-        </div> */}
+        </div>
       </main>
     </Curve>
   );
