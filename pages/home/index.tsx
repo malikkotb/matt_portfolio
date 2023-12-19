@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Hero from "./components/Hero";
 import Images from "./components/Images";
 import Projects from "./components/Projects";
-import Header from "../components/Layout/Header";
+import Header from "../components/Layout/header/Header";
 import Footer from "../components/Layout/Footer";
 import Curve from "../components/Layout/Curve";
 
@@ -14,10 +14,10 @@ export default function Home() {
     <Curve>
       <main>
         <Hero />
-        <div className="relative">
+        {/* <div className="relative">
           <Images />
           <Projects />
-        </div>
+        </div> */}
       </main>
     </Curve>
   );

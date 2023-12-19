@@ -85,22 +85,22 @@ export default function page() {
 
   return (
     <Curve>
-      <div ref={container}>
+      <div className="bg-black" ref={container}>
         {" "}
         {/* container of opacity animation = entire window */}
         <div className="w-screen h-[30vh] grid place-content-center">
-          <div className="text-6xl font-bold text-black">Mini 2023</div>
+          <div className="text-6xl font-bold ">Mini 2023</div>
         </div>
-        <div ref={imageContainer} className="flex bg-white">
+        <div ref={imageContainer} className="flex ">
           <div className="w-[50%]">
             <div className="m-auto w-[80%]">
               <div
                 // ref={container}
-                className="h-screen flex flex-col justify-center text-black"
+                className="h-screen flex flex-col justify-center "
               >
                 <div className={styles.body}>{splitWords(phrase)}</div>
               </div>
-              <div className="h-screen flex flex-col justify-center text-black">
+              <div className="h-screen flex flex-col justify-center ">
                 {/* <div className={styles.body}>{splitWords(phrase)}</div> */}
 
                 <div className={styles.body}>
@@ -132,14 +132,14 @@ export default function page() {
 
           <div
             ref={pinContainerRef}
-            className="w-[50%] h-screen items-center justify-center"
+            className=" w-[50%] h-screen items-center justify-center"
           >
             {/* <div className="rounded-xl w-[40vw] h-[40vw] bg-orange-500"></div> */}
             <SceneCanvas source={"/mini.glb"} />
           </div>
         </div>
-        <div className="w-screen h-[50vh] bg-white grid place-content-center">
-          <div className=" text-9xl text-black font-bold">MATTEO JUST</div>
+        <div className="w-screen h-[50vh] bg-black grid place-content-center">
+          <div className=" text-9xl text-white font-bold">MATTEO JUST</div>
         </div>
       </div>
     </Curve>

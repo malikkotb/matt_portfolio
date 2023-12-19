@@ -1,12 +1,14 @@
 "use client";
 import Lenis from "@studio-freight/lenis";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
-import Header from "./components/Layout/Header";
-
+import Header from "./components/Layout/header/Header";
+import Menu from "./components/Menu";
 export default function MyApp({ Component, pageProps, router }: AppProps) {
+  const [menuIsActive, setMenuIsActive] = useState(false);
+
   useEffect(() => {
     const lenis = new Lenis();
 
@@ -19,7 +21,8 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   }, []);
   return (
     <div>
-      <Header />
+      <Header menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive}/>
+      <Menu menuIsActive={menuIsActive}/>
       <AnimatePresence mode="wait">
         <Component key={router.route} {...pageProps} />
       </AnimatePresence>

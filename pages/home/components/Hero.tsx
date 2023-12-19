@@ -20,7 +20,7 @@ export default function Hero() {
     <motion.section
       style={{ opacity: opacity }}
       ref={targetRef}
-      className="relative h-screen w-screen justify-center"
+      className="relative h-[50vh] w-screen justify-center"
     >
       <motion.div
         style={{ scale, position: position }}
@@ -28,9 +28,9 @@ export default function Hero() {
       >
         {/* A possibility: */}
         <div>
-          <div className="text-8xl text-black tracking-tighter ">MA<span className="">TT</span>EO</div>
+          <div className="text-8xl tracking-tighter ">MA<span className="">TT</span>EO</div>
           <br />
-          <div className="text-8xl text-black tracking-tighter">
+          <div className="text-8xl tracking-tighter">
             <span className=" italic">J</span>UST
           </div>
         </div>

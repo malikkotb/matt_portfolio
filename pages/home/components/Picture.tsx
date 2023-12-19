@@ -1,7 +1,15 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 
-export default function Picture({ margin, inputRange, outputRange, src, height, align }) {
+type Picture = {
+  margin: string,
+  inputRange: number[],
+  outputRange: number[],
+  src: string,
+  height: string,
+  align: string
+}
+export default function Picture({ margin, inputRange, outputRange, src, height, align }: Picture) {
   const targetRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -18,15 +26,15 @@ export default function Picture({ margin, inputRange, outputRange, src, height, 
 
   return (
     <section className={`mt-[${margin}]`}>
-      <div ref={targetRef} className="h-[50vh] w-full">
-        <div className={`top-[10vh] flex flex-col gap-28 items-start`}>
+      <div ref={targetRef} className="h-auto w-full">
+        <div className={`top-[10vh] items-start`}>
           <div className={`w-full flex ${align}`}>
             <motion.div
               style={{ rotate: rotate }}
               className={`ml-[0px] origin-top `}
             >
               <img
-                className={`${height} w-auto`}
+                className={`${height} w-auto shadow-2xl`}
                 src={src}
               ></img>
             </motion.div>
