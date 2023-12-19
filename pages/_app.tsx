@@ -21,8 +21,8 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   }, []);
   return (
     <div>
-      <Header menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive}/>
-      <Menu menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive}/>
+      <Header menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive} />
+      <Menu menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive} />
       <AnimatePresence mode="wait">
         <Component key={router.route} {...pageProps} />
       </AnimatePresence>

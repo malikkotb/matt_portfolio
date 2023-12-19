@@ -25,7 +25,7 @@ export default function Picture({ margin, inputRange, outputRange, src, height, 
   const rotate = useTransform(scrollYProgress, inputRange, outputRange);
 
   return (
-    <section className={`mt-[${margin}]`}>
+    <section className={`mt-[${margin}] mt-[-50vh]`}>
       <div ref={targetRef} className="h-auto w-full">
         <div className={`top-[10vh] items-start`}>
           <div className={`w-full flex ${align}`}>

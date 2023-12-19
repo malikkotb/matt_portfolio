@@ -27,11 +27,34 @@ export default function Menu({ menuIsActive, setMenuIsActive }: HeaderProps) {
       initial="initial"
       animate={menuIsActive ? "open" : "closed"}
     >
-      <Link href={"/home"} onClick={() => setMenuIsActive(!menuIsActive)} className="cursor-pointer m-[5px] text-[5vw] text-white">Home</Link>
-      <Link href={"/about"} onClick={() => setMenuIsActive(!menuIsActive)} className="cursor-pointer m-[5px] text-[5vw] text-white">About</Link>
-      <Link href={"/projects"} onClick={() => setMenuIsActive(!menuIsActive)} className="cursor-pointer m-[5px] text-[5vw] text-white">Projects</Link>
-      <Link href={"/mini"} onClick={() => setMenuIsActive(!menuIsActive)} className="cursor-pointer m-[5px] text-[5vw] text-white">Mini</Link>
-
+      <Link
+        href={"/home"}
+        onClick={() => setMenuIsActive(!menuIsActive)}
+        className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
+      >
+        Home
+      </Link>
+      <Link
+        href={"/about"}
+        onClick={() => setMenuIsActive(!menuIsActive)}
+        className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
+      >
+        About
+      </Link>
+      <Link
+        href={"/projects"}
+        onClick={() => setMenuIsActive(!menuIsActive)}
+        className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
+      >
+        Projects
+      </Link>
+      <Link
+        href={"/mini"}
+        onClick={() => setMenuIsActive(!menuIsActive)}
+        className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
+      >
+        Mini
+      </Link>
     </motion.div>
   );
 }
