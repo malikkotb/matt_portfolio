@@ -7,7 +7,7 @@ export default function Projects() {
       <div className="ml-8 flex flex-col text-4xl italic gap-8 ">
         <Link
           href=""
-          className=" w-56 origin-left transition-transform transform hover:scale-110"
+          className="w-56 origin-left transition-transform transform hover:scale-110"
         >
           BMW{" "}
         </Link>

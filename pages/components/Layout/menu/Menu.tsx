@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 const anim = {
@@ -20,37 +20,55 @@ type HeaderProps = {
 };
 
 export default function Menu({ menuIsActive, setMenuIsActive }: HeaderProps) {
+
+
+  const [hidden, setHidden] = useState(true)
+
+  useEffect(() => {
+    if (menuIsActive) {
+      setTimeout(() => {
+        console.log("hide menu");
+        setHidden(true)
+      }, 500)
+    }
+  }, [menuIsActive])
+
+  const handleClick = () => {
+    setMenuIsActive(false)
+  }
+  
+
   return (
     <motion.div
-      className="fixed flex flex-col items-center bg-black justify-center h-[100vh] w-full z-10"
+      className={`${hidden ? "fixed" : "hidden"} flex flex-col items-center bg-black justify-center h-screen w-full z-10`}
       variants={anim}
       initial="initial"
       animate={menuIsActive ? "open" : "closed"}
     >
       <Link
         href={"/home"}
-        onClick={() => setMenuIsActive(!menuIsActive)}
+        onClick={() => handleClick()}
         className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
       >
         Home
       </Link>
       <Link
         href={"/about"}
-        onClick={() => setMenuIsActive(!menuIsActive)}
+        onClick={() => setMenuIsActive(false)}
         className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
       >
         About
       </Link>
       <Link
         href={"/projects"}
-        onClick={() => setMenuIsActive(!menuIsActive)}
+        onClick={() => setMenuIsActive(false)}
         className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
       >
         Projects
       </Link>
       <Link
         href={"/mini"}
-        onClick={() => setMenuIsActive(!menuIsActive)}
+        onClick={() => setMenuIsActive(false)}
         className="cursor-pointer m-[5px] text-[5vw] text-white transition-transform transform opacity-70 hover:opacity-100 hover:scale-105 duration-300"
       >
         Mini

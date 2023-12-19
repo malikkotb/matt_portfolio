@@ -10,8 +10,8 @@ export default function Hero() {
     // container: , // by default is the current window
   });
 
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0]); // fade out a section
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.3]);
+  const opacity = useTransform(scrollYProgress, [0.6, 1], [1, 0]); // fade out a section
+  const scale = useTransform(scrollYProgress, [0.6, 1], [1, 0.3]);
   const position = useTransform(scrollYProgress, (pos) => {
     return pos === 1 ? "relative" : "fixed";
   });
@@ -20,7 +20,7 @@ export default function Hero() {
     <motion.section
       style={{ opacity: opacity }}
       ref={targetRef}
-      className="relative h-[100vh] w-screen justify-center"
+      className="relative h-[250vh] w-screen justify-center"
     >
       <motion.div
         style={{ scale, position: position }}

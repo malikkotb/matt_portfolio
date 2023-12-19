@@ -3,7 +3,7 @@ import Curve from "../components/Layout/Curve";
 export default function index() {
   return (
     <Curve>
-      <div className="p-4 mt-20">
+      <div className="p-4">
         <div className="text-2xl">About</div>
         <p className="">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed

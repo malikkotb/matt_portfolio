@@ -25,7 +25,7 @@ export default function Picture({ margin, inputRange, outputRange, src, height, 
   const rotate = useTransform(scrollYProgress, inputRange, outputRange);
 
   return (
-    <section className={`mt-[${margin}] mt-[-50vh]`}>
+    <section className={`mt-[${margin}]`}>
       <div ref={targetRef} className="h-auto w-full">
         <div className={`top-[10vh] items-start`}>
           <div className={`w-full flex ${align}`}>
@@ -34,7 +34,7 @@ export default function Picture({ margin, inputRange, outputRange, src, height, 
               className={`ml-[0px] origin-top `}
             >
               <img
-                className={`${height} w-auto shadow-2xl`}
+                className={`${height} cursor-pointer w-auto shadow-2xl rounded-3xl transition-transform transform hover:scale-105 duration-300`}
                 src={src}
               ></img>
             </motion.div>
