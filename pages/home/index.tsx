@@ -12,7 +12,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   return (
     <Curve>
-      <Header />
       <main>
         <Hero />
         <div className="relative">
@@ -20,7 +19,6 @@ export default function Home() {
           <Projects />
         </div>
       </main>
-      <Footer />
     </Curve>
   );
 }

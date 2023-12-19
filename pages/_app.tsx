@@ -3,8 +3,8 @@ import Lenis from "@studio-freight/lenis";
 import { useEffect } from "react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import Layout from "./components/layout";
 import { AnimatePresence } from "framer-motion";
+import Header from "./components/Layout/Header";
 
 export default function MyApp({ Component, pageProps, router }: AppProps) {
   useEffect(() => {
@@ -18,10 +18,11 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
     requestAnimationFrame(raf);
   }, []);
   return (
-    <AnimatePresence mode="wait">
-      <Layout>
+    <div>
+      <Header />
+      <AnimatePresence mode="wait">
         <Component key={router.route} {...pageProps} />
-      </Layout>
-    </AnimatePresence>
+      </AnimatePresence>
+    </div>
   );
 }

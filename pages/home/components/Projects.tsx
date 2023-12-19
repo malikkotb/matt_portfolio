@@ -21,7 +21,7 @@ export default function Projects() {
           href=""
           className=" w-56 origin-left transition-transform transform hover:scale-110"
         >
-          Alpina{" "}
+          Mini{" "}
         </Link>
         <Link
           href=""

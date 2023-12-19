@@ -1,19 +1,29 @@
 "use client";
-import { animate, motion } from "framer-motion";
-import Link from "next/link";
+import { motion } from "framer-motion";
 import { text, curve, translate } from "./anim";
 import { useEffect, useState } from "react";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import style from "./style.module.scss";
 
 type props = {
   children: React.ReactNode;
 };
 
-const routes = {
-  "/": "Home",
+type Routes = {
+  [key: string]: string;
+};
+
+const routes: Routes = {
+  "/home": "Home",
   "/about": "About",
-  "/contact": "Contact",
+  "/projects": "Projects",
+  "/lancia": "Lancia",
+  "/lamborghini": "Lamborghini",
+  "/huawaixaito": "HUAWAI X AITO",
+  "/mini": "Mini",
+  "/bmw": "BMW",
+  "/opel": "Opel"
+  // TODO: add other routes/project names
 };
 
 const anim = (variants: any) => {
@@ -26,7 +36,7 @@ const anim = (variants: any) => {
 };
 
 export default function Curve({ children }: props) {
-  // const router = useRouter();
+  const router = useRouter();
 
   // store dimensions of the window inside state bc. u cant use window.innerHeight with SSR
   const [dimensions, setDimensions] = useState({
@@ -47,8 +57,36 @@ export default function Curve({ children }: props) {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
+  const text = {
+    initial: {
+      opacity: 1,
+    },
+    enter: {
+      opacity: 0,
+      top: -100,
+      transition: {
+        duration: 0.75,
+        delay: 0.3,
+        ease: [0.76, 0, 0.24, 1],
+      }, 
+      transitionEnd: {
+        top: "47.5%"
+      }
+    },
+    exit: {
+      opacity: 1,
+      top: "40%",
+      transition: {
+        duration: 0.5,
+        delay: 0.4,
+        ease: [0.33, 1, 0.68, 1],
+      },
+    }
+  }
+
   return (
     <div className={style.curve}>
+      <motion.p {...anim(text)} className={style.route}>{routes[router.route]}</motion.p>
       <div
         style={{ opacity: dimensions.width == null ? 1 : 0 }}
         className={style.background}
@@ -59,6 +97,8 @@ export default function Curve({ children }: props) {
     </div>
   );
 }
+
+
 
 type Dimensions = {
   width: number;
@@ -90,10 +130,17 @@ const SVG = ({ width, height }: Dimensions) => {
     enter: {
       d: targetPath,
       transition: {
-        duration: .75,
+        duration: 0.75,
         delay: 0.3,
         ease: [0.76, 0, 0.24, 1],
-      }
+      },
+    },
+    exit: {
+      d: initialPath,
+      transition: {
+        duration: 0.75,
+        ease: [0.76, 0, 0.24, 1],
+      },
     },
   };
 
@@ -104,10 +151,20 @@ const SVG = ({ width, height }: Dimensions) => {
     enter: {
       top: "-100vh",
       transition: {
-        duration: .75,
+        duration: 0.75,
         delay: 0.3,
         ease: [0.76, 0, 0.24, 1],
-      }
+      },
+      transitionEnd: {
+        top: "100vh",
+      },
+    },
+    exit: {
+      top: "-300px",
+      transition: {
+        duration: 0.75,
+        ease: [0.76, 0, 0.24, 1],
+      },
     },
   };
 
