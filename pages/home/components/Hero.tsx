@@ -1,5 +1,6 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import { regular } from "../../fonts/fonts";
 
 export default function Hero() {
   const targetRef = useRef(null);
@@ -31,11 +32,16 @@ export default function Hero() {
             MA<span className="">TT</span>EO
           </div>
           <div className="text-[13vw] tracking-tighter leading-[10vw]">
-            <span><span className="italic">J</span>U</span>ST
+            <span>
+              <span className="italic">J</span>U
+            </span>
+            ST
           </div>
-          <div className="w-[75vw] text-xs text-center mt-6">
-            HEYKHAGDYLJDBCF.KSDBCDKSCN.SKDCDNS.KCJN.SDC-NDSY,CNYS.JYDSY.CNSD.CJNDSY.CNDSY.CJNDSY.CJDNSYC.,MD-NM,SCNS,DMCNDSY,MCNYDS,MCNYSD
-          </div>
+        </div>
+        <div
+          className={`${regular.className} text-[#4A4049] w-[35vw] text-[8px] break-words sm:text-xs text-center mt-6`}
+        >
+          HEYKHAGDYLJDBCF.KSDBCDKSCN.SKDCDNS.KCJN.SDCNDSY,CNYS.JYDSY.CNSD.CJNDSY.CNDSY.CJNDSY.CJDNSYC.,MDNM,SCNS,DMCNDSY,MCNYDS,MCNYSD
         </div>
       </motion.div>
     </motion.section>

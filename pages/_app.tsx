@@ -6,6 +6,8 @@ import type { AppProps } from "next/app";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/Layout/header/Header";
 import Menu from "./components/Layout/menu/Menu";
+import CustomCursor from "./components/Cursor/CustomCursor"
+
 export default function MyApp({ Component, pageProps, router }: AppProps) {
   const [menuIsActive, setMenuIsActive] = useState(false);
 
@@ -22,6 +24,7 @@ export default function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <div>
       <Header menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive} />
+      <CustomCursor />
       <Menu menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive} />
       <AnimatePresence mode="wait">
         <Component key={router.route} {...pageProps} />

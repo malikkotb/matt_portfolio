@@ -12,15 +12,17 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-    router.push("/about")// route to home page
+      router.push("/about"); // route to home page
     }, 2500);
   }, []);
 
   return (
     <>
       <Curve>
+        {/* <CustomCursor /> */}
+
         {/* <div className="h-screen overflow-x-hidden w-screen bg-[#011EF5] text-center items-center flex"> */}
-          {/* <AnimateCounter /> */}
+        {/* <AnimateCounter /> */}
         {/* </div> */}
         <div></div>
       </Curve>
