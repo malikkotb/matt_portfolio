@@ -33,6 +33,7 @@ export default function Picture({ margin, inputRange, outputRange, src, height, 
               style={{ rotate: rotate }}
               className={`ml-[0px] origin-top `}
             >
+              {/* TODO: layer details of projects on top of image */}
               <img
                 className={`${height} cursor-pointer w-auto shadow-2xl rounded-3xl transition-transform transform hover:scale-105 duration-300`}
                 src={src}

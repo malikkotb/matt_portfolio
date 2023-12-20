@@ -20,21 +20,23 @@ export default function Hero() {
     <motion.section
       style={{ opacity: opacity }}
       ref={targetRef}
-      className="relative h-[250vh] w-screen justify-center"
+      className="relative h-[250vh] w-screen justify-center "
     >
       <motion.div
         style={{ scale, position: position }}
-        className="top-[35%] left-[35%] flex flex-col text-center items-center "
+        className="flex flex-col text-center h-screen w-screen justify-center items-center "
       >
-        {/* A possibility: */}
-        <div>
-          <div className="text-8xl tracking-tighter ">MA<span className="">TT</span>EO</div>
-          <br />
-          <div className="text-8xl tracking-tighter">
-            <span className=" italic">J</span>UST
+        <div className="text-[#4A4049]">
+          <div className="text-[13vw] tracking-tighter leading-[10vw]">
+            MA<span className="">TT</span>EO
+          </div>
+          <div className="text-[13vw] tracking-tighter leading-[10vw]">
+            <span><span className="italic">J</span>U</span>ST
+          </div>
+          <div className="w-[75vw] text-xs text-center mt-6">
+            HEYKHAGDYLJDBCF.KSDBCDKSCN.SKDCDNS.KCJN.SDC-NDSY,CNYS.JYDSY.CNSD.CJNDSY.CNDSY.CJNDSY.CJDNSYC.,MD-NM,SCNS,DMCNDSY,MCNYDS,MCNYSD
           </div>
         </div>
-
       </motion.div>
     </motion.section>
   );

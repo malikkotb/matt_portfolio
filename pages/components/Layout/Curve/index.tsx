@@ -4,6 +4,7 @@ import { text, curve, translate } from "./anim";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import style from "./style.module.scss";
+import AnimateCounter from "../../AnimateCounter";
 
 type props = {
   children: React.ReactNode;
@@ -86,7 +87,8 @@ export default function Curve({ children }: props) {
 
   return (
     <div className={style.curve}>
-      <motion.p {...anim(text)} className={style.route}>{routes[router.route]}</motion.p>
+      {/* <motion.p {...anim(text)} className={style.route}>{routes[router.route]}</motion.p> */}
+      {router.route === "/" && <div className={style.counterLoader}><AnimateCounter /></div>}
       <div
         style={{ opacity: dimensions.width == null ? 1 : 0 }}
         className={style.background}

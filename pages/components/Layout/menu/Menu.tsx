@@ -40,7 +40,7 @@ export default function Menu({ menuIsActive, setMenuIsActive }: HeaderProps) {
 
   return (
     <motion.div
-      className={`${hidden ? "fixed" : "hidden"} flex flex-col items-center bg-black justify-center h-screen w-full z-10`}
+      className={`hidden flex flex-col items-center bg-[#4A4049] justify-center h-screen w-full z-10`}
       variants={anim}
       initial="initial"
       animate={menuIsActive ? "open" : "closed"}
