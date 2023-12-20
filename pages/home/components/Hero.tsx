@@ -1,4 +1,4 @@
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, delay } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { regular } from "../../fonts/fonts";
 
@@ -17,6 +17,18 @@ export default function Hero() {
     return pos === 1 ? "relative" : "fixed";
   });
 
+  const fadeUpAnimation = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      // y: '100vh',
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
     <motion.section
       style={{ opacity: opacity }}
@@ -25,24 +37,38 @@ export default function Hero() {
     >
       <motion.div
         style={{ scale, position: position }}
+        // variants={parentVariant}
+        initial="hidden"
+        animate="visible"
+        transition={{ staggerChildren: 0.3 }}
         className="flex flex-col text-center h-screen w-screen justify-center items-center "
       >
         <div className="text-[#4A4049]">
-          <div className="text-[13vw] tracking-tighter leading-[10vw]">
+          <motion.div
+            transition={{ delay: 1.2, duration: 1.1 }}
+            variants={fadeUpAnimation}
+            className="text-[13vw] tracking-tighter leading-[10vw]"
+          >
             MA<span className="">TT</span>EO
-          </div>
-          <div className="text-[13vw] tracking-tighter leading-[10vw]">
+          </motion.div>
+          <motion.div
+            transition={{ delay: 1.5, duration: 1 }}
+            variants={fadeUpAnimation}
+            className="text-[13vw] tracking-tighter leading-[10vw]"
+          >
             <span>
               <span className="italic">J</span>U
             </span>
             ST
-          </div>
+          </motion.div>
         </div>
-        <div
-          className={`${regular.className} text-[#4A4049] w-[35vw] text-[8px] break-words sm:text-xs text-center mt-6`}
+        <motion.div
+          variants={fadeUpAnimation}
+          transition={{ delay: 1.8, duration: 1 }}
+          className={`${regular.className} text-[#4A4049] w-[35vw] text-[8px] break-words sm:text-xs text-center mt-3`}
         >
           HEYKHAGDYLJDBCF.KSDBCDKSCN.SKDCDNS.KCJN.SDCNDSY,CNYS.JYDSY.CNSD.CJNDSY.CNDSY.CJNDSY.CJDNSYC.,MDNM,SCNS,DMCNDSY,MCNYDS,MCNYSD
-        </div>
+        </motion.div>
       </motion.div>
     </motion.section>
   );

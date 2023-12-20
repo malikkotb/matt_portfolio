@@ -58,6 +58,8 @@ export default function Curve({ children }: props) {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
+  const durationText = router.route === "/" ? 0.75 : 0.5
+
   const text = {
     initial: {
       opacity: 1,
@@ -78,7 +80,7 @@ export default function Curve({ children }: props) {
       opacity: 1,
       top: "40%",
       transition: {
-        duration: 0.5,
+        duration: durationText,
         delay: 0.4,
         ease: [0.33, 1, 0.68, 1],
       },
@@ -87,14 +89,14 @@ export default function Curve({ children }: props) {
 
   return (
     <div className={style.curve}>
-      {/* <motion.p {...anim(text)} className={style.route}>{routes[router.route]}</motion.p> */}
-      {router.route === "/" && <div className={style.counterLoader}><AnimateCounter /></div>}
+      <motion.p {...anim(text)} className={style.route}>{routes[router.route]}</motion.p>
+      {router.route === "/" && <motion.div {...anim(text)} className={style.counterLoader}><AnimateCounter /></motion.div>}
       <div
         style={{ opacity: dimensions.width == null ? 1 : 0 }}
         className={style.background}
       />
 
-      {dimensions.width > 0 && <SVG {...dimensions} />}
+      {dimensions.width > 0 && <SVG {...dimensions} route={router.route} />}
       {children}
     </div>
   );
@@ -105,9 +107,10 @@ export default function Curve({ children }: props) {
 type Dimensions = {
   width: number;
   height: number;
+  route: string;
 };
 
-const SVG = ({ width, height }: Dimensions) => {
+const SVG = ({ width, height, route }: Dimensions) => {
   // svg path for quadratic bezier curve
   const initialPath = `
         M0 300
@@ -125,6 +128,9 @@ const SVG = ({ width, height }: Dimensions) => {
         L0 300
     `;
 
+    // TODO: maybe useState hook for this
+    // const delayCurve = route === "/" ? 2.25 : 0.3
+    const delayCurve = 0.3
   const curve = {
     initial: {
       d: initialPath,
@@ -133,7 +139,7 @@ const SVG = ({ width, height }: Dimensions) => {
       d: targetPath,
       transition: {
         duration: 0.75,
-        delay: 0.3,
+        delay: delayCurve,
         ease: [0.76, 0, 0.24, 1],
       },
     },
@@ -154,7 +160,7 @@ const SVG = ({ width, height }: Dimensions) => {
       top: "-100vh",
       transition: {
         duration: 0.75,
-        delay: 0.3,
+        delay: delayCurve,
         ease: [0.76, 0, 0.24, 1],
       },
       transitionEnd: {

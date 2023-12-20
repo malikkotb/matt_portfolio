@@ -29,15 +29,13 @@ export default function index() {
   }, []);
 
   return (
-    // <div className={styles.cursorContainer}>
     <div>
       <motion.div
         style={{
           left: smoothMouse.x,
           top: smoothMouse.y,
         }}
-        // className={styles.cursor}>
-        className="fixed w-5 h-5 bg-red-500 rounded-full pointer-events-none"
+        className="fixed w-5 h-5 z-50 bg-[#2C671A] rounded-full pointer-events-none"
       ></motion.div>
     </div>
   );
