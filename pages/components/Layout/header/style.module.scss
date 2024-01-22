@@ -34,10 +34,15 @@
         &::after{
             transform: rotate(45deg);
             top: -1px;
+            // color of X; when Menu is active
+            background-color: white;
+            opacity: 80%;
         }
         &::before{
             transform: rotate(-45deg);
             top: 0px;
+            background-color: white;
+            opacity: 80%;
         }
     }
 }
