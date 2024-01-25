@@ -9,7 +9,7 @@ type HeaderProps = {
 export default function Header({ menuIsActive, setMenuIsActive }: HeaderProps) {
   return (
     <div className={styles.header}>
-      <div className="font-bold text-2xl text-[#4A4049]">MJ</div>
+      <div className={`font-bold text-2xl ${menuIsActive ? "text-white opacity-80" : "text-[#4A4049]"} `}>MJ</div>
       <div
         onClick={() => {
           setMenuIsActive(!menuIsActive);

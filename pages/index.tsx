@@ -12,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     setTimeout(() => {
-      router.push("/about"); // route to home page
+      router.push("/home"); // route to home page
     }, 2500);
   }, []);
 
