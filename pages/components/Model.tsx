@@ -6,5 +6,7 @@ type Model = {
 };
 export default function Model({ source, scale }: Model) {
   const { scene } = useGLTF(source);
-  return <primitive object={scene} scale={scale} />;
+  return (
+      <primitive object={scene} scale={scale} />
+  );
 }

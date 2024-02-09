@@ -2,34 +2,33 @@
 
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stage } from "@react-three/drei";
-import { motion, useScroll } from "framer-motion";
+import { useScroll } from "framer-motion";
+import { motion } from "framer-motion-3d";
 import Model from "./Model";
 import { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+
 
 export default function SceneCanvas({ source }: { source: string }) {
-  const scene = useRef(null);
+  const sceneCanvas = useRef(null);
+  const { scene } = useGLTF(source);
 
   const { scrollYProgress } = useScroll({
-    target: scene,
+    target: sceneCanvas,
 
     offset: ["start end", "end start"],
   });
 
   return (
     <div className="flex justify-center items-center h-full">
-      <Canvas ref={scene} dpr={[1, 2]} camera={{ position: [0, 0, 100] }}>
+      <Canvas ref={sceneCanvas} dpr={[1, 2]}>
         {/* <color attach="background" /> */}
-        {/* <OrbitControls
-          autoRotate
-          enableZoom={false}
-          minPolarAngle={-Math.PI / 2}
-          maxPolarAngle={Math.PI / 2}
-        /> */}
         <ambientLight intensity={0.5} />
         <directionalLight position={[-2, 5, 2]} intensity={1} />
-        {/* <Stage environment={"sunset"}> */}
+        {/* <motion.Stage environment={"sunset"}> */}
+        {/* <motion.primitive object={scene} scale={0.01} /> */}
         <Model source={source} scale={0.01} />
-        {/* </Stage> */}
+        {/* </motion.Stage> */}
       </Canvas>
     </div>
   );
