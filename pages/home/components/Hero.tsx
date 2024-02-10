@@ -43,7 +43,7 @@ export default function Hero() {
         transition={{ staggerChildren: 0.3 }}
         className="flex flex-col text-center h-screen w-screen justify-center items-center "
       >
-        <div className="text-[#4A4049]">
+        <div className="text-[#4A4049] z-0">
           <motion.div
             transition={{ delay: 1.2, duration: 1.1 }}
             variants={fadeUpAnimation}

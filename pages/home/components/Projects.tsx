@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Projects() {
   return (
     <div className="p-4 h-[600px] items-center relative">
-      <h2 className="my-8 text-4xl">Collaborations include:</h2>
+      {/* <h2 className="my-8 text-4xl">Collaborations include:</h2>
       <div className="ml-8 flex flex-col text-4xl italic gap-8 ">
         <Link
           href=""
@@ -41,7 +41,7 @@ export default function Projects() {
         >
           Opel{" "}
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 }

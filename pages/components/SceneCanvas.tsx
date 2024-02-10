@@ -11,7 +11,7 @@ import { useGLTF } from "@react-three/drei";
 
 export default function SceneCanvas({ source }: { source: string }) {
   const sceneCanvas = useRef(null);
-  const { scene } = useGLTF(source);
+  // const { scene } = useGLTF(source);
 
   const { scrollYProgress } = useScroll({
     target: sceneCanvas,

@@ -23,7 +23,7 @@ const routes: Routes = {
   "/huawaixaito": "HUAWAI X AITO",
   "/mini": "Mini",
   "/bmw": "BMW",
-  "/opel": "Opel"
+  "/opel": "Opel",
   // TODO: add other routes/project names
 };
 
@@ -58,7 +58,7 @@ export default function Curve({ children }: props) {
     return () => window.removeEventListener("resize", resize);
   }, []);
 
-  const durationText = router.route === "/" ? 0.75 : 0.5
+  const durationText = router.route === "/" ? 0.75 : 0.5;
 
   const text = {
     initial: {
@@ -71,10 +71,10 @@ export default function Curve({ children }: props) {
         duration: 0.75,
         delay: 0.3,
         ease: [0.76, 0, 0.24, 1],
-      }, 
+      },
       transitionEnd: {
-        top: "47.5%"
-      }
+        top: "47.5%",
+      },
     },
     exit: {
       opacity: 1,
@@ -84,15 +84,21 @@ export default function Curve({ children }: props) {
         delay: 0.4,
         ease: [0.33, 1, 0.68, 1],
       },
-    }
-  }
+    },
+  };
 
   return (
     <div className={style.curve}>
-      <motion.p {...anim(text)} className={style.route}>{routes[router.route]}</motion.p>
-      {router.route === "/" && <motion.div {...anim(text)} className={style.counterLoader}><AnimateCounter /></motion.div>}
+      {router.route !== "/" && (<motion.p {...anim(text)} className={style.route}>
+        {routes[router.route]}
+      </motion.p>)}
+      {router.route === "/" && (
+        <motion.div {...anim(text)} className={style.counterLoader}>
+          <AnimateCounter />
+        </motion.div>
+      )}
       <div
-        style={{ opacity: dimensions.width == null ? 1 : 0 }}
+        style={{ opacity: dimensions.width == null ? 1 : 0, zIndex: 100 }}
         className={style.background}
       />
 
@@ -101,8 +107,6 @@ export default function Curve({ children }: props) {
     </div>
   );
 }
-
-
 
 type Dimensions = {
   width: number;
@@ -128,9 +132,9 @@ const SVG = ({ width, height, route }: Dimensions) => {
         L0 300
     `;
 
-    // TODO: maybe useState hook for this
-    // const delayCurve = route === "/" ? 2.25 : 0.3
-    const delayCurve = 0.3
+  // TODO: maybe useState hook for this
+  // const delayCurve = route === "/" ? 2.25 : 0.3
+  const delayCurve = 0.3;
   const curve = {
     initial: {
       d: initialPath,
