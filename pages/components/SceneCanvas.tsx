@@ -1,17 +1,17 @@
 "use client";
 
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls, Stage } from "@react-three/drei";
 import { useScroll } from "framer-motion";
 import { motion } from "framer-motion-3d";
 import Model from "./Model";
-import { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
 
+import { useRef } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Stage } from "@react-three/drei";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function SceneCanvas({ source }: { source: string }) {
   const sceneCanvas = useRef(null);
-  // const { scene } = useGLTF(source);
 
   const { scrollYProgress } = useScroll({
     target: sceneCanvas,
@@ -19,16 +19,28 @@ export default function SceneCanvas({ source }: { source: string }) {
     offset: ["start end", "end start"],
   });
 
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.pageYOffset);
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Convert scroll position to rotation (you might need to adjust the divisor to control the speed of rotation)
+  const rotationY = scrollY * 0.001;
+
   return (
     <div className="flex justify-center items-center h-full">
-      <Canvas ref={sceneCanvas} dpr={[1, 2]}>
-        {/* <color attach="background" /> */}
+      <Canvas ref={sceneCanvas}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[-2, 5, 2]} intensity={1} />
-        {/* <motion.Stage environment={"sunset"}> */}
-        {/* <motion.primitive object={scene} scale={0.01} /> */}
-        <Model source={source} scale={0.01} />
-        {/* </motion.Stage> */}
+        <Stage environment={"night"}>
+          <motion.group rotation={[0, rotationY, 0]}>
+            <Model source={source} />
+          </motion.group>
+        </Stage>
       </Canvas>
     </div>
   );

@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Curve from "../components/Layout/Curve";
 
+
 export default function page() {
   const imageContainer = useRef(null);
   const pinContainerRef = useRef(null);
@@ -29,7 +30,6 @@ export default function page() {
   const phrase =
     "The Modern Mini - It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more orless normal distribution of letters.";
 
-  //   let refs = useRef([]);
   let refs = useRef<(HTMLSpanElement | null)[]>([]);
 
   const container = useRef(null);
@@ -85,11 +85,11 @@ export default function page() {
 
   return (
     <Curve>
-      <div className="bg-black" ref={container}>
+      <div className="bg-white" ref={container}>
         {" "}
         {/* container of opacity animation = entire window */}
         <div className="w-screen h-[30vh] grid place-content-center">
-          <div className="text-6xl font-bold ">Mini 2023</div>
+          <div className="text-6xl font-bold">Mini 2023</div>
         </div>
         <div ref={imageContainer} className="flex ">
           <div className="w-[50%]">
@@ -135,11 +135,11 @@ export default function page() {
             className=" w-[50%] h-screen items-center justify-center"
           >
             {/* <div className="rounded-xl w-[40vw] h-[40vw] bg-orange-500"></div> */}
-            <SceneCanvas source={"/mini.glb"} />
+            <SceneCanvas source={"./yacht.glb"} />
           </div>
         </div>
-        <div className="w-screen h-[50vh] bg-black grid place-content-center">
-          <div className=" text-9xl text-white font-bold">MATTEO JUST</div>
+        <div className="w-screen h-[50vh] grid place-content-center">
+          <div className=" text-9xl  font-bold">MATTEO JUST</div>
         </div>
       </div>
     </Curve>

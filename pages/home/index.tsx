@@ -7,7 +7,7 @@ import Curve from "../components/Layout/Curve";
 export default function Home() {
   return (
     <Curve>
-      <main className="bg-black">
+      <main className="">
         <Hero />
         <div className="relative">
           <Images />
