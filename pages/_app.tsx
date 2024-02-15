@@ -11,16 +11,16 @@ import CustomCursor from "./components/Cursor/CustomCursor"
 export default function MyApp({ Component, pageProps, router }: AppProps) {
   const [menuIsActive, setMenuIsActive] = useState(false);
 
-  useEffect(() => {
-    const lenis = new Lenis();
+  // useEffect(() => {
+  //   const lenis = new Lenis();
 
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    };
+  //   const raf = (time: number) => {
+  //     lenis.raf(time);
+  //     requestAnimationFrame(raf);
+  //   };
 
-    requestAnimationFrame(raf);
-  }, []);
+  //   requestAnimationFrame(raf);
+  // }, []);
   return (
     <div>
       <Header menuIsActive={menuIsActive} setMenuIsActive={setMenuIsActive} />
