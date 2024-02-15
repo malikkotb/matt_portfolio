@@ -1,6 +1,6 @@
 "use client";
 
-import SceneCanvas from "../components/SceneCanvas";
+import SceneCanvas from "../components/Model_Scroll/SceneCanvas";
 import gsap from "gsap";
 import React, { useRef, useEffect } from "react";
 import styles from "./page.module.css";

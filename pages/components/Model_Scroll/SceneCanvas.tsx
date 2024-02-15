@@ -8,7 +8,6 @@ import { Canvas } from "@react-three/fiber";
 import { Stage } from "@react-three/drei";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useScroll } from "framer-motion";
 
 export default function SceneCanvas({ source }: { source: string }) {
   // framer 3d apporach
