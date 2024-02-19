@@ -46,7 +46,6 @@ export default function index() {
   }, []);
 
   // Images Animation
-  const containerRef = useRef(null)
   const targetRef = useRef(null);
 
   const { scrollYProgress } = useScroll({ target: targetRef, offset: ["0 1", "1.33 1"] });
@@ -94,9 +93,9 @@ export default function index() {
             NOWLIVE
           </span>
         </div>
-        <div className="absolute top-[95%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-2 items-center z-20">
+        <motion.div className="absolute top-[95%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex gap-2 items-center z-20">
           SCROLL <IoArrowDownSharp /> {/* TODO: make text dissapear on scroll */}
-        </div>
+        </motion.div>
       </div>
       <div ref={targetRef} className="h-[320vh] relative">
         {divStyles.map((style, index) => (
